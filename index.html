@@ -181,6 +181,7 @@
         <div class="row">
           <input id="shareLink" readonly>
           <button class="btn soft" id="copyBtn">📋 Copy</button>
+          <button class="btn soft" id="shareBtn">📤 Share</button>
         </div>
 
         <p class="tiny" id="status">Status: Waiting for crush response…</p>
@@ -290,6 +291,27 @@ else {
       await navigator.clipboard.writeText(shareLink.value);
       alert("Copied ✅ Send to your crush!");
     });
+  document.getElementById("shareBtn").addEventListener("click", async () => {
+  const link = document.getElementById("shareLink").value;
+
+  if (!link) return alert("Create link first!");
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Valentine AI Match 💘",
+        text: "I sent you a match request! Check this out 😌",
+        url: link
+      });
+    } catch (err) {
+      console.log("Share cancelled");
+    }
+  } else {
+    await navigator.clipboard.writeText(link);
+    alert("Sharing not supported here. Link copied instead ✅");
+  }
+});
   </script>
 </body>
 </html>
+
