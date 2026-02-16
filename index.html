@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine AI • Proposer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1d1430;
+      --muted:rgba(29,20,48,.72);
+      --glass:rgba(255,255,255,.60);
+      --stroke:rgba(255,255,255,.65);
+      --shadow:0 18px 55px rgba(29,20,48,.16);
+      --r:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--ink);
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(900px 520px at 16% 8%, #ffe3f1 0%, transparent 60%),
+        radial-gradient(780px 520px at 88% 10%, #dcd2ff 0%, transparent 55%),
+        radial-gradient(980px 640px at 50% 92%, #cfe9ff 0%, transparent 60%),
+        linear-gradient(180deg,#fff3fa 0%, #f7f2ff 50%, #f2fbff 100%);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:26px 16px 70px}
+    .badge{
+      display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+      padding:14px 18px;border-radius:18px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow:0 10px 28px rgba(29,20,48,.12);
+      backdrop-filter:blur(12px);
+    }
+    .pill{
+      padding:7px 12px;border-radius:999px;
+      background:linear-gradient(90deg,#ff4da6,#7b4dff);
+      color:#fff;font-weight:800;font-size:.9rem;
+    }
+    .top{text-align:center;margin:16px 0 12px}
+    .top h1{margin:0;font-size:clamp(2rem,3.6vw,2.7rem);letter-spacing:-.02em}
+    .brand{font-family:Pacifico,cursive;font-weight:400}
+    .sub{margin:10px 0 0;color:var(--muted)}
+    .card{
+      margin-top:14px;
+      background:var(--glass);
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      border-radius:var(--r);
+      padding:18px;
+      backdrop-filter:blur(14px);
+    }
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    label{display:grid;gap:6px;font-weight:700}
+    input{
+      padding:12px;border-radius:14px;border:1px solid rgba(29,20,48,.12);
+      background:rgba(255,255,255,.75);outline:none;font-size:1rem;
+    }
+    .btn{
+      border:0;padding:12px 16px;border-radius:16px;font-weight:900;cursor:pointer;
+      transition:transform .12s ease, filter .12s ease; user-select:none;
+      box-shadow:0 12px 24px rgba(29,20,48,.12);
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
+    .btn:active{transform:translateY(1px)}
+    .primary{
+      width:100%;color:#fff;
+      background:linear-gradient(90deg,#7b4dff,#ff4da6);
+      box-shadow:0 18px 34px rgba(123,77,255,.22);
+      margin-top:12px;
+    }
+    .soft{
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(29,20,48,.12);
+    }
+    .divider{height:1px;background:rgba(29,20,48,.12);margin:14px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .chip{
+      display:flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:999px;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(29,20,48,.12);
+      cursor:pointer;font-weight:700;
+    }
+    .chip input{accent-color:#7b4dff}
+    .reportGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+    @media(max-width:820px){.reportGrid{grid-template-columns:1fr}}
+    .stat{
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(29,20,48,.10);
+      border-radius:18px;
+      padding:12px;
+      text-align:center;
+    }
+    .stat .k{font-weight:900;opacity:.75}
+    .stat .v{font-weight:900;font-size:1.15rem;margin-top:6px}
+    .tiny{color:var(--muted);margin:8px 0 0}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .row input{flex:1;min-width:240px}
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="badge">
+      <div><b>GECT</b> • Conducted by <b>ISTE GECT STUDENTS’ CHAPTER</b></div>
+      <div class="pill">💘 Valentine AI</div>
+    </div>
+
+    <header class="top">
+      <h1><span class="brand">Valentine AI</span> v2.0 🤖💘</h1>
+      <p class="sub">Real 2-user interest match: you pick yours → crush picks theirs → score updates.</p>
+    </header>
+
+    <section class="card">
+      <h2 style="margin:0 0 10px;">Create Proposal</h2>
+
+      <div class="grid">
+        <label>Your Name
+          <input id="yourName" placeholder="e.g., nithya" autocomplete="off">
+        </label>
+        <label>Crush Name
+          <input id="crushName" placeholder="e.g., Someone Special" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="divider"></div>
+      <h3 style="margin:0;">Pick your interests</h3>
+      <p class="tiny">Pick at least 3. Your crush will pick theirs after opening the link.</p>
+
+      <div class="chips" id="interestChips">
+        <label class="chip"><input type="checkbox" value="Music">🎵 Music</label>
+        <label class="chip"><input type="checkbox" value="Movies">🎬 Movies</label>
+        <label class="chip"><input type="checkbox" value="Anime">🍥 Anime</label>
+        <label class="chip"><input type="checkbox" value="Gaming">🎮 Gaming</label>
+        <label class="chip"><input type="checkbox" value="Coding">💻 Coding</label>
+        <label class="chip"><input type="checkbox" value="Sports">🏅 Sports</label>
+        <label class="chip"><input type="checkbox" value="Food">🍕 Food</label>
+        <label class="chip"><input type="checkbox" value="Travel">✈️ Travel</label>
+        <label class="chip"><input type="checkbox" value="Books">📚 Books</label>
+        <label class="chip"><input type="checkbox" value="Photography">📷 Photography</label>
+        <label class="chip"><input type="checkbox" value="Fitness">🏋️ Fitness</label>
+        <label class="chip"><input type="checkbox" value="Memes">😂 Memes</label>
+      </div>
+
+      <button class="btn primary" id="createBtn">Create Link 🔗</button>
+      <p class="tiny">This saves your interests to Firebase and generates a link for your crush.</p>
+
+      <div id="afterCreate" style="display:none;">
+        <div class="divider"></div>
+
+        <h2 style="margin:0;">Live Match Result</h2>
+
+        <div class="reportGrid">
+          <div class="stat">
+            <div class="k">Compatibility</div>
+            <div class="v" id="score">—</div>
+          </div>
+          <div class="stat">
+            <div class="k">Love Type</div>
+            <div class="v" id="type">—</div>
+          </div>
+          <div class="stat">
+            <div class="k">Verdict</div>
+            <div class="v" id="verdict">Waiting for crush interests…</div>
+          </div>
+          <p class="tiny" id="eligibilityStatus"></p>
+
+        </div>
+
+        <div class="divider"></div>
+        <h3 style="margin:0;">Share with your crush 🔗</h3>
+
+        <div class="row">
+          <input id="shareLink" readonly>
+          <button class="btn soft" id="copyBtn">📋 Copy</button>
+        </div>
+
+        <p class="tiny" id="status">Status: Waiting for crush response…</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyAwA_TyCWdG2JuMTfBr-s1VndAIipX9kbc",
+  authDomain: "valen-4ad62.firebaseapp.com",
+  databaseURL: "https://valen-4ad62-default-rtdb.firebaseio.com",
+  projectId: "valen-4ad62",
+  storageBucket: "valen-4ad62.firebasestorage.app",
+  messagingSenderId: "780552323016",
+  appId: "1:780552323016:web:8f2403dfe9fa3bb74e8afd",
+  measurementId: "G-NBWGFN40G9"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function makeId(len=6){
+      const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let out="";
+      for(let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)];
+      return out;
+    }
+    
+    function getCheckedInterests(){
+      return [...document.querySelectorAll(`#interestChips input[type="checkbox"]:checked`)]
+        .map(x => x.value);
+    }
+
+    const createBtn = document.getElementById("createBtn");
+    const afterCreate = document.getElementById("afterCreate");
+    const shareLink = document.getElementById("shareLink");
+    const statusEl = document.getElementById("status");
+
+    let currentId = null;
+
+    createBtn.addEventListener("click", async () => {
+      const yourName = document.getElementById("yourName").value.trim();
+      const crushName = document.getElementById("crushName").value.trim();
+      const yourInterests = getCheckedInterests();
+
+      if(!yourName || !crushName) return alert("Enter both names!");
+      if(yourInterests.length < 3) return alert("Pick at least 3 interests!");
+
+      currentId = makeId();
+
+      // GitHub pages repo path safe link
+      const link = new URL(`answer.html?id=${currentId}`, location.href).href;
+document.getElementById("shareLink").value = link;
+
+      // Save minimal proposal (score will be calculated by crush later)
+      await db.ref("proposals/" + currentId).set({
+        yourName,
+        crushName,
+        yourInterests,
+        crushInterests: [],
+        overlap: [],
+        score: null,
+        loveType: null,
+        verdict: "Waiting for crush interests…",
+        status: "pending",
+        createdAt: Date.now()
+      });
+
+      afterCreate.style.display = "block";
+
+      // Live updates (when crush calculates + answers)
+      db.ref("proposals/" + currentId).on("value", (snap) => {
+        const p = snap.val();
+        if(!p) return;
+
+        // status
+        if(p.status === "accepted") statusEl.textContent = "Status: 💖 Crush clicked YES!";
+        else if(p.status === "rejected") statusEl.textContent = "Status: 💔 Crush clicked NO…";
+        else statusEl.textContent = "Status: Waiting for crush response…";
+
+        // score area
+        document.getElementById("score").textContent = p.score == null ? "—" : (p.score + "%");
+        document.getElementById("type").textContent = p.loveType || "—";
+        document.getElementById("verdict").textContent = p.verdict || "—";
+        const eligibilityEl = document.getElementById("eligibilityStatus");
+
+if (p.score == null) {
+  eligibilityEl.textContent = "Waiting for crush to calculate match…";
+}
+else if (p.score >= 70) {
+  eligibilityEl.textContent = "🔥 Eligible for Valentine Proposal!";
+  eligibilityEl.style.color = "green";
+}
+else {
+  eligibilityEl.textContent = "⚠️ Match below 70%. Proposal locked.";
+  eligibilityEl.style.color = "crimson";
+}
+
+      });
+    });
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      if(!shareLink.value) return alert("Create link first!");
+      await navigator.clipboard.writeText(shareLink.value);
+      alert("Copied ✅ Send to your crush!");
+    });
+  </script>
+</body>
+</html>
